@@ -1,4 +1,28 @@
 
+# Mastermind-FE
+
+### Description
+- The nextjs frontend for the mastermind project.
+
+### Getting Started
+1) clone project
+2) `npm i` to install all dependencies
+3) `npm run dev`
+
+
+### Bug Journal
+- Running frontend but getting `failed to fetch error`. Error occurred because backend was not running.
+
+
+### Refresh / New Topics Learned
+
+
+### TODO
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

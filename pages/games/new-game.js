@@ -4,6 +4,7 @@ import Textbox from "@/components/ui/Textbox";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import {useRouter} from "next/router";
+import HomeButton from "@/components/ui/Buttons/HomeButton";
 
 const NewGameForm = () => {
     const router = useRouter();
@@ -24,8 +25,8 @@ const NewGameForm = () => {
     const createNewGame = async (playerName, difficulty) => {
 
         // const createReservation = async (listingId, startDate, endDate, duration, total) => {
-        console.log("-> playerName", playerName);
-        console.log("-> difficulty", difficulty);
+        // console.log("-> playerName", playerName);
+        // console.log("-> difficulty", difficulty);
 
         const transformedData = {
             player1_name: playerName,
@@ -70,13 +71,14 @@ const NewGameForm = () => {
 
             <div className='flex flex-row justify-center mt-10'>
                 <div className='w-2/4'>
-                    <Link
-                        href={homeLink}
-                        // className="flex flex-row my-4 justify-center accent-blue-500">
-                        className="text-xl underline hover:text-blue-500 hover:underline focus:outline-none">
-                        Home
-                        {/*{listing.title}*/}
-                    </Link>
+                    <HomeButton />
+                    {/*<Link*/}
+                    {/*    href={homeLink}*/}
+                    {/*    // className="flex flex-row my-4 justify-center accent-blue-500">*/}
+                    {/*    className="text-xl underline hover:text-blue-500 hover:underline focus:outline-none">*/}
+                    {/*    Home*/}
+                    {/*    /!*{listing.title}*!/*/}
+                    {/*</Link>*/}
                 </div>
             </div>
 

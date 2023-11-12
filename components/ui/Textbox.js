@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextBox = ( { labelText, placeholderText, type='text' , onChange, required} ) => {
+const TextBox = ( { labelText, placeholderText, type='text' , onChange, required, disabled } ) => {
     return (
         <>
             <div>
@@ -13,6 +13,7 @@ const TextBox = ( { labelText, placeholderText, type='text' , onChange, required
                     placeholder={placeholderText}
                     onChange={onChange}
                     required={required}
+                    disabled={disabled}
                 />
             </div>
         </>

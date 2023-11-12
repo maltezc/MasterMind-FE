@@ -13,6 +13,8 @@
 ### Bug Journal
 - Running frontend but getting `failed to fetch error`. Error occurred because backend was not running.
 - trailing slash on route was missing and caused failed to fetch error.
+- Always check the network tab in chrome when a request fails.
+- w-44 preventing dropdown from being full width.
 
 ### Refresh / New Topics Learned
 
@@ -25,6 +27,7 @@
 - Add a timer for the entire game, or each guess attempts
 - Anything else that you come up with to make the game more fun/interesting that
 demonstrates your backend potential!
+
 
 
 ### Helpful Sites

@@ -1,15 +1,24 @@
 import {Inter} from 'next/font/google'
 import GameList from "@/components/games/GameList";
+import Button from "@/components/ui/Button";
+import {useRouter} from 'next/router'
 
 const inter = Inter({subsets: ['latin']})
 
 export default function Home(props) {
-    const {games} = props.data
+    const router = useRouter();
 
-    console.log("-> games", games);
+    const {games} = props.data
 
     const activeGames = games.filter(game => game.status === "ACTIVE")
     const completedGames = games.filter(game => game.status === "COMPLETED")
+
+
+    const handleLoginClick = (e) => {
+        localStorage.setItem('redirectAfterLogin', window.location.pathname);
+        router.push('/game/new-game');
+        // console.log(localStorage.getItem("redirectAfterLogin"))
+    }
 
     return (
         <>
@@ -18,7 +27,17 @@ export default function Home(props) {
             </div>
 
             <div className='mt-20 flex flex-row mx-28'>
-                <div className='w-3/4'>New Game!</div>
+                <div className='w-3/4'>
+                    {/*<div className='flex flex-row justify-center'>*/}
+                    <Button
+                        className='flex flex-row my-4 accent-blue-500 ml-40'
+                        onClick={handleLoginClick}
+                        buttonText="New Game"
+                        type='button'
+                    >
+                    </Button>
+                    {/*</div>*/}
+                </div>
             </div>
 
             <div className='mt-16'>

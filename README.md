@@ -12,14 +12,24 @@
 
 ### Bug Journal
 - Running frontend but getting `failed to fetch error`. Error occurred because backend was not running.
-
+- trailing slash on route was missing and caused failed to fetch error.
 
 ### Refresh / New Topics Learned
 
 
 ### TODO
+- Add support to give hints
+- Add a configurable “difficulty level” and adjust the number of numbers that are used
+- Extend to multi-player
+- Keep track of scores
+- Add a timer for the entire game, or each guess attempts
+- Anything else that you come up with to make the game more fun/interesting that
+demonstrates your backend potential!
 
 
+### Helpful Sites
+- https://flowbite.com/docs/forms/radio/
+- https://tailwindflex.com/prashant/tailwind-css-radio-button-cards
 
 
 

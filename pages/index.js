@@ -2,6 +2,7 @@ import {Inter} from 'next/font/google'
 import GameList from "@/components/games/GameList";
 import Button from "@/components/ui/Button";
 import {useRouter} from 'next/router'
+import Header from "@/components/layout/header";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -16,19 +17,18 @@ export default function Home(props) {
 
     const handleLoginClick = (e) => {
         localStorage.setItem('redirectAfterLogin', window.location.pathname);
-        router.push('/game/new-game');
+        router.push('/games/new-games');
         // console.log(localStorage.getItem("redirectAfterLogin"))
     }
 
     return (
         <>
-            <div className='title flex py-5 justify-center items-center bg-gray-800 text-3xl'>
-                <h1>Mastermind!</h1>
-            </div>
+            <Header
+                title='Mastermind!'>
+            </Header>
 
             <div className='mt-20 flex flex-row mx-28'>
                 <div className='w-3/4'>
-                    {/*<div className='flex flex-row justify-center'>*/}
                     <Button
                         className='flex flex-row my-4 accent-blue-500 ml-40'
                         onClick={handleLoginClick}
@@ -36,7 +36,6 @@ export default function Home(props) {
                         type='button'
                     >
                     </Button>
-                    {/*</div>*/}
                 </div>
             </div>
 

@@ -9,6 +9,7 @@ export default function Home() {
                 <h1>Mastermind!</h1>
             </div>
 
+            <p>hello world</p>
 
         </>
     )

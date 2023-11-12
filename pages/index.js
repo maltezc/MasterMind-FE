@@ -16,7 +16,6 @@ export default function Home() {
 
 export async function getServerSideProps() {
 
-
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/games`);
 
     if (!res.ok) {

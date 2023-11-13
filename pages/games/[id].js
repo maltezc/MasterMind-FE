@@ -7,15 +7,16 @@ import Dropdown from "@/components/ui/Dropdown/Dropdown";
 import useSWR from 'swr';
 
 const Game = (props) => {
-        console.log({props})
         const guess = useRef("");
         const [attemptResult, setAttemptResult] = useState("");
-        const [attemptsRemaining, setAttemptsRemaining] = useState(null);
-        const [hints, setHints] = useState(null);
 
         const fetcher = (url) => fetch(url).then((res) => res.json());
         const url = `http://127.0.0.1:5000/api/attempts/${props.data.game.id}`
         const {data: hintData, error, isLoading, mutate} = useSWR(url, fetcher);
+        console.log("-> hintData", hintData);
+
+
+
 
         const {game} = props.data
         const {id, attempts, status, spaces, player1_name, player2_name} = game
@@ -43,6 +44,7 @@ const Game = (props) => {
                     }
                 )
                 const attemptResponse = await attemptRes.json();
+                console.log("-> attemptResponse", attemptResponse);
 
                 const {message} = attemptResponse;
                 setAttemptResult(message)
@@ -66,31 +68,35 @@ const Game = (props) => {
                 <div className='flex flex-row justify-center mt-24'>
 
                     <div className='flex flex-col space-y-10'>
-                        <form onSubmit={handleSubmit}>
-                            <div className='justify-center'>
 
-                                <Textbox
-                                    placeholderText={`Guess a ${spaces} character integer`}
-                                    labelText='Guess'
-                                    required={true}
-                                    onChange={(e) => (guess.current = e.target.value)}
-                                    disabled={status === "COMPLETED"}
+                        {status === "ACTIVE" ?
+                            <form onSubmit={handleSubmit}>
+                                <div className='justify-center'>
+
+                                    <Textbox
+                                        placeholderText={`Guess a ${spaces} character integer`}
+                                        labelText='Guess'
+                                        required={true}
+                                        onChange={(e) => (guess.current = e.target.value)}
+                                        disabled={status === "COMPLETED"}
+                                    />
+                                </div>
+
+                                <Button
+                                    className='flex flex-row my-4 justify-center accent-blue-500'
+                                    buttonText="Submit"
+                                    type='submit'
                                 />
-
-                                {/*    show spaces allowed */}
+                            </form> :
+                            <div className='text-center text-2xl'>
+                                <p>Game Completed</p>
                             </div>
-
-                            <Button
-                                className='flex flex-row my-4 justify-center accent-blue-500'
-                                buttonText="Submit"
-                                type='submit'
-                            />
-                        </form>
+                        }
 
                         <div className='flex flex-row space-x-24'>
                             <div>
                                 <p>Attempts remaining:</p>
-                                <p>{attemptsRemaining}</p>
+                                {hintData && <p>{hintData.attempts_remaining}</p>}
                             </div>
                             <div>
                                 <p>Last attempt result:</p>

@@ -13,9 +13,6 @@ const Game = (props) => {
         const fetcher = (url) => fetch(url).then((res) => res.json());
         const url = `http://127.0.0.1:5000/api/attempts/${props.data.game.id}`
         const {data: hintData, error, isLoading, mutate} = useSWR(url, fetcher);
-        console.log("-> hintData", hintData);
-
-
 
 
         const {game} = props.data
@@ -44,7 +41,6 @@ const Game = (props) => {
                     }
                 )
                 const attemptResponse = await attemptRes.json();
-                console.log("-> attemptResponse", attemptResponse);
 
                 const {message} = attemptResponse;
                 setAttemptResult(message)
@@ -69,7 +65,7 @@ const Game = (props) => {
 
                     <div className='flex flex-col space-y-10'>
 
-                        {status === "ACTIVE" ?
+                        {hintData && hintData.attempts_remaining > 0 ?
                             <form onSubmit={handleSubmit}>
                                 <div className='justify-center'>
 

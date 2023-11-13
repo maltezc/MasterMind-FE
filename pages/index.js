@@ -15,10 +15,9 @@ export default function Home(props) {
     const completedGames = games.filter(game => game.status === "COMPLETED")
 
 
-    const handleLoginClick = (e) => {
+    const handleLoginClick = async (e) => {
         localStorage.setItem('redirectAfterLogin', window.location.pathname);
-        router.push('/games/new-games');
-        // console.log(localStorage.getItem("redirectAfterLogin"))
+        await router.push('/games/new-game');
     }
 
     return (
@@ -40,18 +39,18 @@ export default function Home(props) {
             </div>
 
             <div className='mt-16'>
-                <p className='text-center'>Game History</p>
+                <p className='text-center text-3xl'>Game History</p>
                 <div className='flex flex-row mt-12 mx-20 justify-center space-x-24'>
 
                     <div className='flex flex-col'>
-                        <p>Active Games</p>
+                        <p className='text-2xl'>Active Games</p>
                         <div className='mt-8'>
                             <GameList games={activeGames}/>
                         </div>
                     </div>
 
                     <div className='flex flex-col'>
-                        <p>Completed Games</p>
+                        <p className='text-2xl'>Completed Games</p>
                         <div className='mt-8'>
                             <GameList games={completedGames}/>
                         </div>
@@ -64,7 +63,6 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
-
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/games`);
 

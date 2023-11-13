@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import HintList from "@/components/hints/HintList";
 
 const DropDown = ({hints}) => {
-    const [dropdownShowing, setDropdownShowing] = useState(false)
+    const [dropdownShowing, setDropdownShowing] = useState(true)
 
-    // const hintsList = hints.map(hint => )
 
     return (
         <>
@@ -43,5 +42,7 @@ const DropDown = ({hints}) => {
         </>
     );
 };
+
+
 
 export default DropDown;

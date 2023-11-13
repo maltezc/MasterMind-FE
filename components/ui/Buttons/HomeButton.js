@@ -1,19 +1,26 @@
 import React from 'react';
-import Link from "next/link";
+import Button from "@/components/ui/Button";
+import {useRouter} from "next/router";
 
 const HomeButton = () => {
+    const router = useRouter();
 
-    const homeLink = `/`;
+    const handleLoginClick = async (e) => {
+        localStorage.setItem('redirectAfterLogin', window.location.pathname);
+        await router.push(`/`);
+    }
 
     return (
         <>
-            <Link
-                href={homeLink}
-                // className="flex flex-row my-4 justify-center accent-blue-500">
-                className="text-xl underline hover:text-blue-500 hover:underline focus:outline-none">
-                Home
-                {/*{listing.title}*/}
-            </Link>
+
+            <Button
+                className='flex flex-row my-4 accent-blue-500 ml-40'
+                onClick={handleLoginClick}
+                buttonText="Home"
+                type='button'
+            >
+            </Button>
+
         </>
     );
 };

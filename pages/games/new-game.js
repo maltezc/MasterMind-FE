@@ -12,21 +12,13 @@ const NewGameForm = () => {
     const playerName = useRef("");
     const difficulty = useRef("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(`Firing handleSubmit`)
-        console.log("-> playerName: ", playerName.current);
-        console.log("-> difficulty: ", difficulty.current);
-
-        createNewGame(playerName.current, difficulty.current)
+        await createNewGame(playerName.current, difficulty.current)
         // createReservation(id, startDate, endDate, bookingLength, totalExact)
     }
 
     const createNewGame = async (playerName, difficulty) => {
-
-        // const createReservation = async (listingId, startDate, endDate, duration, total) => {
-        // console.log("-> playerName", playerName);
-        // console.log("-> difficulty", difficulty);
 
         const transformedData = {
             player1_name: playerName,
@@ -34,7 +26,6 @@ const NewGameForm = () => {
         }
 
         try {
-            console.log(`createGame fired`)
             // todo: might need to update backend to take in more data like taxes, racklyfe fee, etc.
             const res = await fetch(`http://127.0.0.1:5000/api/games/`, {
             // const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/games`, {
@@ -46,14 +37,12 @@ const NewGameForm = () => {
             })
 
             const response = await res.json();
-            console.log("-> newGame", response);
 
             const { game } = response;
             const exploreLink = `/games/${game.id}`;
             // todo: go to games page
-            router.push(exploreLink)
+            await router.push(exploreLink)
         } catch (e) {
-            console.error("Error while creating reservation: ", e.message)
 
             // TODO: ADD state for errors.
             // In your component's render:

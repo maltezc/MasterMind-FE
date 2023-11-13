@@ -4,20 +4,24 @@ import Textbox from "@/components/ui/Textbox";
 import Button from "@/components/ui/Button";
 import HomeButton from "@/components/ui/Buttons/HomeButton";
 import Dropdown from "@/components/ui/Dropdown/Dropdown";
+import useSWR from 'swr';
 
 const Game = (props) => {
+        console.log({props})
         const guess = useRef("");
         const [attemptResult, setAttemptResult] = useState("");
         const [attemptsRemaining, setAttemptsRemaining] = useState(null);
         const [hints, setHints] = useState(null);
+
+        const fetcher = (url) => fetch(url).then((res) => res.json());
+        const url = `http://127.0.0.1:5000/api/attempts/${props.data.game.id}`
+        const {data: hintData, error, isLoading, mutate} = useSWR(url, fetcher);
 
         const {game} = props.data
         const {id, attempts, status, spaces, player1_name, player2_name} = game
 
         const handleSubmit = async (e) => {
             e.preventDefault();
-            // console.log(`Firing guess - handleSubmit`)
-            // console.log("-> guess", guess);
             await makeAttempt(id, guess.current)
         }
 
@@ -39,26 +43,13 @@ const Game = (props) => {
                     }
                 )
                 const attemptResponse = await attemptRes.json();
-                // console.log("-> attemptResponse", attemptResponse);
 
                 const {message} = attemptResponse;
                 setAttemptResult(message)
 
-                const hintsRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/attempts/${id}`)
-                const hintsResponse = await hintsRes.json();
-                // console.log("-> hintsResponse", hintsResponse);
-
-                const {attempts_remaining, hints} = hintsResponse;
-                setAttemptsRemaining(attempts_remaining)
-                setHints(hints)
-
-                // console.log("-> attempts_remaining", attempts_remaining);
-                // console.log("-> hints", hints);
-
-
+                await mutate()
             } catch
                 (e) {
-                console.error("Error while making attempt: ", e.message)
             }
         };
 
@@ -107,10 +98,12 @@ const Game = (props) => {
                             </div>
                         </div>
 
-                        <div className='flex flex-col w-full'>
-                            {/*    TODO: SHOW/HIDE PAST GUESSES AND HINTS HISTORY */}
-                            <Dropdown hints={hints} />
-                        </div>
+                        {hintData ?
+                            <div className='flex flex-col w-full'>
+                                <Dropdown hints={hintData}/>
+                            </div> :
+                            <div>Loading</div>
+                        }
                     </div>
 
                 </div>

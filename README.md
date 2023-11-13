@@ -14,10 +14,11 @@
 - Running frontend but getting `failed to fetch error`. Error occurred because backend was not running.
 - trailing slash on route was missing and caused failed to fetch error.
 - Always check the network tab in chrome when a request fails.
-- w-44 preventing dropdown from being full width.
+- w-44 in boiler plaate preventing dropdown from being full width. Always check the boiler plate.
+- have a conditional checker when using `useSWR` to catch when data isLoading
 
 ### Refresh / New Topics Learned
-
+- mutate
 
 ### TODO
 - Add support to give hints

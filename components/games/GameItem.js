@@ -4,7 +4,16 @@ import {useRouter} from "next/router";
 
 const GameItem = (props) => {
     const router = useRouter();
-    const {id, player1_name, player2_name, players_count, number_to_guess, attempts, status} = props
+    const {
+        id,
+        player1_name,
+        player2_name,
+        players_count,
+        number_to_guess,
+        attempts,
+        status,
+        difficulty
+    } = props
 
     const handleLoginClick = async (e) => {
         localStorage.setItem('redirectAfterLogin', window.location.pathname);
@@ -19,6 +28,7 @@ const GameItem = (props) => {
             {player2_name && <p>{player2_name}</p>}
             <p>players_count: {players_count}</p>
             <p>attempts count: {attempts.length}</p>
+            <p>difficulty: {difficulty}</p>
 
             <Button
                 className='flex flex-row my-4 accent-blue-500 ml-40'

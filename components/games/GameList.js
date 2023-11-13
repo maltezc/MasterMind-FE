@@ -17,6 +17,7 @@ const GameList = (props) => {
                         number_to_guess={game.number_to_guess}
                         attempts={game.attempts}
                         status={game.status}
+                        difficulty={game.difficulty}
                     />
                 ))}
             </ul>

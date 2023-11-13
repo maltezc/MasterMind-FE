@@ -70,7 +70,7 @@ const Game = (props) => {
                                 <div className='justify-center'>
 
                                     <Textbox
-                                        placeholderText={`Guess a ${spaces} character integer`}
+                                        placeholderText={`Guess a ${spaces} character positive integer`}
                                         labelText='Guess'
                                         required={true}
                                         onChange={(e) => (guess.current = e.target.value)}

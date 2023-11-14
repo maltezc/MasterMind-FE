@@ -7,7 +7,9 @@
 ### Getting Started
 1) clone project
 2) `npm i` to install all dependencies
-3) `npm run dev`
+3) set .env.local variables:
+   1) NEXT_PUBLIC_BACKEND_URL=http://127.0.0.1:5000/api
+4) `npm run dev`
 
 
 ### Bug Journal

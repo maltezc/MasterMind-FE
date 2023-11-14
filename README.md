@@ -2,7 +2,25 @@
 # Mastermind-FE
 
 ### Description
-- The nextjs frontend for the mastermind project.
+- The nextjs frontend for the mastermind project. A user can play a guess game with easy(4 numbers), medium(5 numbers),
+  hard(6 numbers), and legendary(7 numbers) difficulty settings. To play, from the Home menu, click `New Game`. In the 
+  next page, type in your name and the difficulty from the options mentioned. You have up to 10 attempts to guess the
+  right number. If you'd like a hint, click on the `Guess History` dropdown to see your past guesses and the game 
+  responses. When you're done, click the `Home` button to return back to the home menu where you'll see your list of 
+  active and completed games. Create a new game and play as you'd like.
+
+### Future Improvements
+- ~~Add support to give hints~~
+- ~~Add a configurable “difficulty level” and adjust the number of numbers that are used~~
+- Extend to multi-player - IN PROGRESS
+  - Building out backend features. See backend branch `38-add-multi-player-functionality `
+  - prior to creating a new game, Users could sign up and then begin a new game with their names. During the game, 
+  - turns would exchange between the 2. 
+- Keep track of scores
+- Add a timer for the entire game, or each guess attempts
+- Anything else that you come up with to make the game more fun/interesting that
+demonstrates your backend potential!
+- write tests
 
 ### Getting Started
 1) clone project
@@ -21,16 +39,6 @@
 
 ### Refresh / New Topics Learned
 - mutate
-
-### TODO
-- Add support to give hints
-- Add a configurable “difficulty level” and adjust the number of numbers that are used
-- Extend to multi-player
-- Keep track of scores
-- Add a timer for the entire game, or each guess attempts
-- Anything else that you come up with to make the game more fun/interesting that
-demonstrates your backend potential!
-
 
 
 ### Helpful Sites
